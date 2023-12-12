@@ -1,0 +1,77 @@
+# Ignore system folder
+/application/config/config.php
+/application/config/database.php
+/application/config/doctrine.php
+/application/config/email.php
+/application/config/foreign_chars.php
+/application/config/hooks.php
+/application/config/migration.php
+/application/config/rest.php
+/application/config/routes.php
+/application/config/smarty.php
+/application/config/twig.php
+/application/controllers/*
+/application/core/*
+/application/errors/*
+/application/helpers/*
+/application/hooks/*
+/application/language/*
+/application/libraries/*
+/application/logs/*
+/application/migrations/*
+/application/models/*
+/application/third_party/*
+/application/views/*
+
+# Ignore user-specific files
+/application/config/development/*
+/application/config/testing/*
+/application/config/staging/*
+/application/config/production/*
+/application/config/custom/*
+
+# Ignore composer dependencies
+/vendor/
+
+# Ignore logs and temporary files
+/log/*
+!/log/index.html
+/uploads/*
+!/uploads/index.html
+/tmp/*
+!/tmp/index.html
+
+# Ignore cache files
+/application/cache/*
+!/application/cache/index.html
+
+# Ignore sensitive information
+/application/config/.htaccess
+/application/config/index.html
+/application/config/database.php
+/application/config/encryption.php
+/application/config/rest.php
+/application/config/smarty.php
+/application/config/twig.php
+
+# Ignore IDE files
+.vscode/
+.idea/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore CodeIgniter project-specific files
+/.htaccess
+/index.php
+/favicon.ico
+/robots.txt
+
+# Ignore environment-specific files
+.env
+.env.example
+
+# Ignore logs and backups
+*.log
+*.bak
