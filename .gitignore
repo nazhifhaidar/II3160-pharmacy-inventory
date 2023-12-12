@@ -71,6 +71,7 @@ Thumbs.db
 # Ignore environment-specific files
 .env
 .env.example
+_env
 
 # Ignore logs and backups
 *.log
