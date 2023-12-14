@@ -4,11 +4,12 @@ namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourceController;
 use App\Models\Cocoone;
+use App\Models\Drugs;
 use App\Models\StockPredictionModel;
 
 class ApiController extends ResourceController{
     public function getData(){
-        $data = model(Cocoone::class)->findAll();
+        $data = model(Drugs::class)->findAll();
         return $this->respond($data);
     }
 
