@@ -8,3 +8,5 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 $routes->get('/about', 'About::index');
 $routes->get('/blog', 'Blog::index');
+$routes->get('/api/data','ApiController::getData');
+$routes->post('/api/prediction', 'ApiController::postPrediction');
