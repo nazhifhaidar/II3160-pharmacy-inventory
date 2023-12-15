@@ -44,7 +44,7 @@ class Home extends BaseController
 
         // Check for cURL errors
         if (curl_errno($ch)) {
-            echo 'Curl error: ' . curl_error($ch)."<br>";
+            // echo 'Curl error: ' . curl_error($ch)."<br>";
             $stockModel = new StockPredictionModel();
             $initialDate = '2023-01-01';
             $initialStock = 100;

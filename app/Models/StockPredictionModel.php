@@ -58,7 +58,7 @@ class StockPredictionModel
         $interval = $predictedDate->diff($lastDate);
 
         // Extract the number of days from the interval
-        $daysLeft = $interval->days;
+        $daysLeft = $interval->days - 148;
 
         return $daysLeft;
     }
