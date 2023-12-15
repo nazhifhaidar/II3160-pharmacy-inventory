@@ -1,9 +1,14 @@
 <?php
+
 namespace App\Controllers;
+
 class Blog extends BaseController
 {
-    public function index() : string
+    public function index()
     {
-        return view('header').view('menu').view('blog').view('footer');
+        if (session()->get('num_user') == '') {
+            return redirect()->to('/login');
+        }
+        return view('header') . view('menu') . view('blog') . view('footer');
     }
 }

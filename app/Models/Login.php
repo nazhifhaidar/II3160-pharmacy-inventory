@@ -9,7 +9,7 @@ class Login extends Model
     public function getDataUsers($email, $password)
     {
         $db = \Config\Database::connect();
-        $queryString = 'SELECT name FROM users WHERE 
+        $queryString = 'SELECT name FROM user WHERE 
             email = "' . $email . '" 
             AND password = "' . $password . '"';
         $query = $db->query($queryString);

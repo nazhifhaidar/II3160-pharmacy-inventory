@@ -1,17 +1,22 @@
 <?php
 
 namespace App\Controllers;
+
 use App\Models\Cocoone;
 use App\Models\StockPredictionModel;
 use App\Models\Drugs;
 
 class Home extends BaseController
 {
-    public function index(): string
+    public function index()
     {
+        if (session()->get('num_user') == '') {
+            return redirect()->to('/login');
+        }
+
         $model = model(Drugs::class);
         $data = $model->getDataDrugs();
- 
+
         $apiUrl = base_url('api/prediction');
         // $apiUrl = '/api/prediction';
         /* echo $apiUrl;
@@ -26,7 +31,7 @@ class Home extends BaseController
         // echo (json_encode($postData));
         $jsonData = json_encode($postData);
         /* echo json_encode($postData, JSON_PRETTY_PRINT); */
-        
+
         // echo $jsonData."<br>";
 
         // $client= \Config\Services::curlrequest();
@@ -34,7 +39,7 @@ class Home extends BaseController
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
         curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Connection: keep-alive', 'Content-Length: '.strlen($jsonData)));
+        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Connection: keep-alive', 'Content-Length: ' . strlen($jsonData)));
         curl_setopt($ch, CURLOPT_TIMEOUT, 3); // Set timeout in seconds
         $requestBody = curl_getinfo($ch, CURLOPT_POSTFIELDS);
         // echo $requestBody;
@@ -66,10 +71,8 @@ class Home extends BaseController
                 ];
             }
             $apiData = $predictionsResult;
-
-        }else{
+        } else {
             $apiData = json_decode($response, true);
-            
         }
 
         // Close cURL session
@@ -77,7 +80,7 @@ class Home extends BaseController
 
         // Process $response as needed
         /* print_r($apiData); */
-        
+
 
         // Check if decoding was successful
         if ($apiData === null && json_last_error() !== JSON_ERROR_NONE) {
@@ -89,6 +92,6 @@ class Home extends BaseController
             }
         }
 
-        return view('header').view('menu').view('dashboard', ['data' => $data['data'], 'fields' => $data['fields']]).view('footer');
+        return view('header') . view('menu') . view('dashboard', ['data' => $data['data'], 'fields' => $data['fields']]) . view('footer');
     }
 }
