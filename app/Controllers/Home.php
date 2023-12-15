@@ -81,7 +81,7 @@ class Home extends BaseController
 
         // Check if decoding was successful
         if ($apiData === null && json_last_error() !== JSON_ERROR_NONE) {
-            echo 'Error decoding JSON: ' . json_last_error_msg();
+            // echo 'Error decoding JSON: ' . json_last_error_msg();
         } else {
             $data['fields'][] = 'Predicted Days to Depleted';
             foreach ($apiData as $key => $prediction) {
