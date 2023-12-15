@@ -19,8 +19,7 @@ class ApiController extends ResourceController{
             $json = $this->request->getJSON();
 
             // Access the data from the JSON body
-            $timestamp = $json->timestamp;
-            $stock = $json->stock;
+            $predictions = $json->predictions;
 
             // Validate input data if necessary
 
@@ -34,10 +33,20 @@ class ApiController extends ResourceController{
 
             // Perform training and prediction using the StockPredictionModel
             $stockModel->trainAndSaveModel();
-            $daysLeft = $stockModel->dayLeftPrediction($timestamp, $stock);
+            $predictionsResult = [];
+            foreach ($predictions as $prediction) {
+                $timestamp = $prediction->timestamp;
+                $stock = $prediction->stock;
+                $daysLeft = $stockModel->dayLeftPrediction($timestamp, $stock);
+
+                $predictionsResult[] = [
+                    'timestamp' => $timestamp,
+                    'predicted_days_left' => $daysLeft,
+                ];
+            }
 
             // Return the result as a JSON response
-            return $this->respond(['predicted_days_left' => $daysLeft]);
+            return $this->respond($predictionsResult);
 
         } catch (\Exception $e) {
             // Handle exceptions and respond with an error
