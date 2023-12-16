@@ -1,5 +1,26 @@
+<?php
+if (isset($_GET['search'])) {
+    // Get the search keyword
+    $searchKeyword = $_GET['search'];
+
+    // Filter the data based on the search keyword
+    $filteredData = array_filter($data, function ($row) use ($searchKeyword) {
+        foreach ($row as $field) {
+            if (stripos($field, $searchKeyword) !== false) {
+                return true; // Match found
+            }
+        }
+        return false; // No match found
+    });
+
+    // Use the filtered data for display
+    $data = $filteredData;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -46,10 +67,13 @@
             width: 80%;
             text-align: center;
             margin: 0 auto;
-            background: #fff; /* White background */
+            background: #fff;
+            /* White background */
             border-radius: 10px;
-            margin-top: -25px; /* Adjust this value to move the table upwards */
-            color: #000; /* Black font color */
+            margin-top: -25px;
+            /* Adjust this value to move the table upwards */
+            color: #000;
+            /* Black font color */
         }
 
         th,
@@ -61,7 +85,8 @@
         }
 
         th {
-            background: #B7E3D5; /* Updated background color */
+            background: #B7E3D5;
+            /* Updated background color */
             color: #000;
             font-size: 18px;
             border-bottom: 2px solid #000;
@@ -72,7 +97,8 @@
         }
 
         tr:nth-child(odd) {
-            background: #fff; /* White background */
+            background: #fff;
+            /* White background */
         }
 
         .empty-row td {
@@ -90,17 +116,22 @@
             flex-direction: column;
             padding: 20px;
 
-        #search-bar {
-            margin: 10px;
-            display: flex;
-            justify-content: flex-end;
+            #search-bar {
+                margin: 10px;
+                display: flex;
+                justify-content: flex-end;
+            }
+
+            #search-input {
+                padding: 5px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+            }
         }
 
-        #search-input {
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
+        .menu {
+            display: flex;
+            justify-content: center;
         }
     </style>
 </head>
@@ -109,8 +140,15 @@
     <div class="welcome-container">
         <h2 style="color: black;">Welcome!</h2>
     </div>
+    <div class="menu">
+        <p>
+            <a href="/">Dashboard</a> |
+            <a href="/inventory">Inventory</a>
+        </p>
 
-    <div id="search-bar">
+    </div>
+
+    <div id="search-bar" style="display: flex; justify-content: center">
         <form>
             <label for="search-input" style="margin-right: 5px;">Search:</label>
             <input type="text" id="search-input" name="search" placeholder="Enter keyword">
@@ -120,71 +158,24 @@
 
     <div style="display: flex; flex-direction: column; align-items: flex-end; padding: 10px;">
         <table>
-            <tr>
-                <th style="color: black;">id</th>
-                <th style="color: black;">brandName</th>
-                <th style="color: black;">genericName</th>
-                <th style="color: black;">NDC</th>
-                <th style="color: black;">dosage</th>
-                <th style="color: black;">expDate</th>
-                <th style="color: black;">supplyID</th>
-                <th style="color: black;">purchasePrice</th>
-                <th style="color: black;">sellPrice</th>
-                <th style="color: black;">stock</th>
-            </tr>
-
-            <?php
-                function printRows() {
-                    // Existing data
-                    $medicineData = array(
-                        "id" => 1, 
-                        "brandName" => "Aldactone", 
-                        "genericName" => "spironolactone", 
-                        "NDC" => 12365, 
-                        "dosage" => 25, 
-                        "expDate" => "12/24", 
-                        "supplyID" => 1, 
-                        "purchasePrice" => 14.56, 
-                        "sellPrice" => 17.88, 
-                        "stock" => 73,
-                    );
-
-                    // New medicine data
-                    $newMedicine = array(
-                        "id" => 2,
-                        "brandName" => "ExampleMed",
-                        "genericName" => "exampleGeneric",
-                        "NDC" => 54321,
-                        "dosage" => 50,
-                        "expDate" => "01/25",
-                        "supplyID" => 2,
-                        "purchasePrice" => 22.45,
-                        "sellPrice" => 28.99,
-                        "stock" => 50,
-                    );
-
-                    // Add the new medicine to the array
-                    $medicineEntry = [$medicineData, $newMedicine];
-
-                    // Print all rows
-                    foreach ($medicineEntry as $data) {
-                        echo "<tr>";
-                        echo "<td>" . $data["id"] . "</td>";
-                        echo "<td>" . $data["brandName"] . "</td>";
-                        echo "<td>" . $data["genericName"] . "</td>";
-                        echo "<td>" . $data["NDC"] . "</td>";
-                        echo "<td>" . $data["dosage"] . "</td>";
-                        echo "<td>" . $data["expDate"] . "</td>";
-                        echo "<td>" . $data["supplyID"] . "</td>";
-                        echo "<td>" . $data["purchasePrice"] . "</td>";
-                        echo "<td>" . $data["sellPrice"] . "</td>";
-                        echo "<td>" . $data["stock"] . "</td>";
-                        echo "</tr>";
-                    }
-                }
-            printRows();
-            ?>
+            <thead>
+                <tr>
+                    <?php foreach ($fields as $field) : ?>
+                        <th><?= $field ?></th>
+                    <?php endforeach; ?>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($data as $row) : ?>
+                    <tr>
+                        <?php foreach ($fields as $field) : ?>
+                            <td><?= $row->$field ?></td>
+                        <?php endforeach; ?>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
         </table>
     </div>
 </body>
+
 </html>

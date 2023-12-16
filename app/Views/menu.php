@@ -1,5 +1,4 @@
 <p> Menu : 
 <a href="/">Dashboard</a> | 
-<a href="/about">About</a> | 
-<a href="/blog">Blog</a> </p>
+<a href="/inventory">Inventory</a> 
 

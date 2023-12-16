@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Link to your CSS file -->
-    <link rel="stylesheet" href="<?= base_url('public/css/styles.css') ?>">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
     <body>
         <h1>
