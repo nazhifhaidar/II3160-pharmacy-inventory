@@ -1,9 +1,9 @@
 <?php
-namespace app\Controllers;
-class Inventory extends BaseController
+namespace App\Controllers;
+class InventoryController extends BaseController
 {
-    public function index() : string 
+    public function index()
     {
-        return view('inventory');
+        return view("inventory");
     }
 }

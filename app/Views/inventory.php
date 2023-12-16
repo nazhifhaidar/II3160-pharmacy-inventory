@@ -164,10 +164,10 @@
                     );
 
                     // Add the new medicine to the array
-                    $medicineData[] = $newMedicine;
+                    $medicineEntry = [$medicineData, $newMedicine];
 
                     // Print all rows
-                    foreach ($medicineData as $data) {
+                    foreach ($medicineEntry as $data) {
                         echo "<tr>";
                         echo "<td>" . $data["id"] . "</td>";
                         echo "<td>" . $data["brandName"] . "</td>";

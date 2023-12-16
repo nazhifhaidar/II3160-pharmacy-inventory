@@ -48,6 +48,31 @@ INSERT INTO review (user_name, comment, drugs_id) VALUES ('User26', 'Trusted bra
 INSERT INTO review (user_name, comment, drugs_id) VALUES ('User27', 'Helps with sleep. Thankful!', 2);
 INSERT INTO review (user_name, comment, drugs_id) VALUES ('User28', 'No more insomnia. Great product.', 2);
 
+-- Reviews for drugs_id 3
+INSERT INTO review (user_name, comment, drugs_id) VALUES ('User29', 'Improves insulin sensitivity. Very satisfied.', 3);
+INSERT INTO review (user_name, comment, drugs_id) VALUES ('User30', 'Stable blood sugar levels. Effective medication.', 3);
+
+-- Reviews for drugs_id 4
+INSERT INTO review (user_name, comment, drugs_id) VALUES ('User31', 'Relieves pain quickly. Excellent for headaches.', 4);
+INSERT INTO review (user_name, comment, drugs_id) VALUES ('User32', 'Works like a charm. No side effects.', 4);
+
+
+-- Reviews for drugs_id 3
+INSERT INTO review (user_name, comment, drugs_id) VALUES ('User33', 'Easy to manage. Good for daily use.', 3);
+INSERT INTO review (user_name, comment, drugs_id) VALUES ('User34', 'Improves overall well-being. Satisfied customer.', 3);
+
+-- Reviews for drugs_id 4
+INSERT INTO review (user_name, comment, drugs_id) VALUES ('User35', 'Reliable pain relief. Recommended.', 4);
+INSERT INTO review (user_name, comment, drugs_id) VALUES ('User36', 'Fast-acting. Good for muscle pain.', 4);
+
+-- More reviews for drugs_id 3
+INSERT INTO review (user_name, comment, drugs_id) VALUES ('User37', 'Effective for glucose control. Happy with the results.', 3);
+INSERT INTO review (user_name, comment, drugs_id) VALUES ('User38', 'No issues with digestion. Easy on the stomach.', 3);
+
+-- More reviews for drugs_id 4
+INSERT INTO review (user_name, comment, drugs_id) VALUES ('User39', 'Great for arthritis pain. Would recommend.', 4);
+INSERT INTO review (user_name, comment, drugs_id) VALUES ('User40', 'Affordable and effective. Happy customer.', 4);
+
 -- More reviews for drugs_id 3
 INSERT INTO review (user_name, comment, drugs_id) VALUES ('User41', 'Helps with blood sugar levels. Good for diabetes.', 3);
 INSERT INTO review (user_name, comment, drugs_id) VALUES ('User42', 'Improved energy levels. Satisfied with the product.', 3);
