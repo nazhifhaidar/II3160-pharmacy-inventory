@@ -17,6 +17,7 @@ class ApiController extends ResourceController{
         try {
             // Get JSON data from the request
             $json = $this->request->getJSON();
+            // var_dump($json); 
 
             // Access the data from the JSON body
             $predictions = $json->predictions;

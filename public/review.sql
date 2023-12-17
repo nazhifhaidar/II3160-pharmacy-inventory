@@ -2,8 +2,7 @@ CREATE TABLE review (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     user_name VARCHAR(50) NOT NULL,
     comment TEXT NOT NULL,
-    drugs_id INT,
-    FOREIGN KEY (drugs_id) REFERENCES drugs (id)
+    drugs_id INT
 );
 
 INSERT INTO review (user_name, comment, drugs_id) VALUES ('User1', 'Works well for me. Nice Product', 1);

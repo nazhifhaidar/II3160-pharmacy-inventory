@@ -1,7 +1,6 @@
 <?php
 //train.php
 namespace App\Models;
-// require 'vendor/autoload.php';
 
 
 use Phpml\Regression\LeastSquares;
@@ -43,8 +42,6 @@ class StockPredictionModel
         $model = new LeastSquares();
         $model->train($trainingData, $timestamps);
         $this->model = $model;
-
-        // file_put_contents('trained_model.dat', serialize($model));
     }
 
     public function dayLeftPrediction($timestamp, $stock)
