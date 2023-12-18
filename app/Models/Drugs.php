@@ -29,6 +29,13 @@ class Drugs extends Model
         return ['data' => $result, 'fields' => $fieldNames];
     }
 
+    public function getDataDrug($id){
+        $result = $this->where('id', $id)->first();
+        $fieldNames = empty($result) ? [] : array_keys((array) $result);
+
+        return ['data' => $result, 'fields' => $fieldNames];
+    }
+
     public function restock($id, int $amount)
     {
         try{
