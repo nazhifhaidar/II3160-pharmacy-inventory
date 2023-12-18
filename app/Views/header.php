@@ -13,8 +13,17 @@
     body {
         font-family: 'Inter';
     }
+    h1 {
+        font-size: 3rem;
+    }
+    h2 {
+        font-size: 2rem;
+    }
+    h3 {
+        font-size: 1rem;
+    }
 </style>
     <body>
         <h1>
-            Website Beta
+            Website MyMed (Dibaca Mamet)
         </h1>

@@ -5,7 +5,7 @@
 <div id="dashboard">
     <!-- Overall Information -->
     <div id="overall">
-        <h2>Overall Reviews</h2>
+        <h3>Overall Reviews</h3>
         <div id="overallChartDiv" style="height:40vh; width:80vw">
             <canvas id="overallChart"></canvas>
         </div>
@@ -14,7 +14,7 @@
 
     <!-- The Most Reviewed Product -->
     <div id="mostReviewed">
-        <h2>The Most Reviewed Product</h2>
+        <h3>The Most Reviewed Product</h3>
         <div id="mostReviewedInfo" style=" height:40vh; width:80vw">
             <canvas id="mostReviewedChart"></canvas>
             <div id="mostReviewedDetails"></div>
@@ -23,7 +23,7 @@
 
     <!-- Top 3 Products -->
     <div id="top3Products">
-        <h2>Top 3 Products</h2>
+        <h3>Top 3 Products</h3>
         <div id="top3ProductsInfo" style="height:40vh; width:80vw">
             <canvas id="top3ProductsChart"></canvas>
         </div>
