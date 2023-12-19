@@ -3,29 +3,32 @@
 <!-- menampilkan tren obat terakhir-->
 <div class="center" id="dashboard">
     <!-- Overall Information -->
-    <div id="overall" style="display:flex; justify-content: center;flex-direction:column; align-items:center;">
-        <h3 >Overall Reviews</h3>
-        <div id="overallChartDiv" style="height:40vh; width:80vw; display:flex; justify-content: center;">
-            <canvas id="overallChart"></canvas>
+    <div class="row">
+        <div id="overall" style="display:flex; justify-content: center;flex-direction:column; align-items:center;">
+            <h3>Overall Reviews</h3>
+            <div id="overallChartDiv" style="height:40vh; width:40vw; display:flex; justify-content: center;">
+                <canvas id="overallChart"></canvas>
+            </div>
+            <div id="totalReview"></div>
         </div>
-        <div id="totalReview"></div>
+
+        <!-- The Most Reviewed Product -->
+        <div id="mostReviewed" style="display:flex; justify-content: center; flex-direction:column; align-items:center;">
+            <h3>The Most Reviewed Product</h3>
+            <div id="mostReviewedInfo">
+                Most Reviewed Product (ID <span id="mostReviewedId"></span>): <br><strong id="mostReviewedPercentage" class="larger-font"></strong> Recommends
+            </div>
+        </div>
+
+        <!-- Top 3 Products -->
+        <div id="top3Products" style="display:flex; justify-content: center;flex-direction:column; align-items:center;">
+            <h3>Top 3 Products</h3>
+            <div id="top3ProductsInfo" style="height:40vh; width:40vw; display:flex; justify-content: center;">
+                <canvas id="top3ProductsChart"></canvas>
+            </div>
+        </div>
     </div>
 
-    <!-- The Most Reviewed Product -->
-    <div id="mostReviewed" style="display:flex; justify-content: center; flex-direction:column; align-items:center;">
-        <h3>The Most Reviewed Product</h3>
-        <div id="mostReviewedInfo">
-            <div id="mostReviewedDetails"></div>
-        </div>
-    </div>
-
-    <!-- Top 3 Products -->
-    <div id="top3Products" style="display:flex; justify-content: center;flex-direction:column; align-items:center;">
-        <h3>Top 3 Products</h3>
-        <div id="top3ProductsInfo" style="height:40vh; width:80vw; display:flex; justify-content: center;">
-            <canvas id="top3ProductsChart"></canvas>
-        </div>
-    </div>
 </div>
 
 <script>
@@ -70,8 +73,9 @@
     // });
 
     // Most Reviewed Details
-    document.getElementById('mostReviewedDetails').innerText = `Most Reviewed Product (ID ${summary.the_most_reviewed.id}): ${summary.the_most_reviewed.percentage.percentage}% Recommends`;
-
+    document.getElementById('mostReviewedPercentage').innerText = `${summary.the_most_reviewed.percentage.percentage.toFixed(2)}%`;
+    document.getElementById('mostReviewedId').innerText = `${summary.the_most_reviewed.id}`;
+    // document.getElementById('mostReviewedDetails').innerText = `Most Reviewed Product (ID ${summary.the_most_reviewed.id}): ${summary.the_most_reviewed.percentage.percentage.toFixed(2)}% Recommends`;
     // Top 3 Products Chart
     const top3ProductsChartCtx = document.getElementById('top3ProductsChart').getContext('2d');
     const top3ProductsChart = new Chart(top3ProductsChartCtx, {
@@ -79,7 +83,7 @@
         data: {
             labels: summary.top3_products.map(product => `ID ${product.id}`),
             datasets: [{
-                label: 'Percentage Recommends',
+                label: '% Recommends (%)',
                 data: summary.top3_products.map(product => product.percentage.percentage),
                 backgroundColor: ['#36A2EB', '#36A2EB', '#36A2EB'], // You can customize colors
             }],
