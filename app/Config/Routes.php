@@ -18,4 +18,6 @@ $routes->post('/login_action', 'LoginController::login_action');
 $routes->put('/api/restock/(:any)', 'DatabaseAPI::restockDrugs/$1');
 $routes->get('/inventory', 'InventoryController::index');
 $routes->get('/api/data_complete','ApiController::getDataAndTheirPredictions');
+$routes->post('/restock', 'RestockController::restock');
+
 

@@ -133,6 +133,31 @@ if (isset($_GET['search'])) {
             display: flex;
             justify-content: center;
         }
+
+        #backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); /* Adjust the alpha value for transparency */
+            display: none;
+            z-index: 998; /* Ensure the backdrop is below the popup */
+        }
+
+        /* Updated style for the restock popup */
+        #restockPopup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            padding: 20px;
+            border: 1px solid #000;
+            border-radius: 10px;
+            z-index: 999;
+        }
     </style>
 </head>
 
@@ -147,14 +172,19 @@ if (isset($_GET['search'])) {
             <button id="restockButton">Restock Medicine</button>
         </p>
     </div>
-
-    <div id="restockPopup" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: #fff; padding: 20px; border: 1px solid #000; border-radius: 10px; z-index: 999;">
+    <div id="backdrop"></div>
+    <div id="restockPopup" class="popup">
         <h3>Restock Medicine</h3>
-        <form id="restockForm">
+        <form id="restockForm" action="/restock" method="POST">
             <label for="restockAmount">Restock Amount:</label>
             <input type="number" id="restockAmount" name="restockAmount" required>
             <br>
-            <!-- Add other fields as needed for restocking -->
+            <label for="drugsId">Medicine:</label>
+            <select id="drugsId" name="drugsId" required>
+                <?php foreach ($data as $row) : ?>
+                    <option value="<?= $row->id ?>"><?= $row->genericName ?></option>
+                <?php endforeach; ?>
+            </select>
             <button type="submit">Submit</button>
         </form>
         <button onclick="closeRestockPopup()">Close</button>
@@ -192,11 +222,13 @@ if (isset($_GET['search'])) {
     <script>
         // Function to open the restock popup
         function openRestockPopup() {
+            document.getElementById("backdrop").style.display = "block";
             document.getElementById("restockPopup").style.display = "block";
         }
 
         // Function to close the restock popup
         function closeRestockPopup() {
+            document.getElementById("backdrop").style.display = "none";
             document.getElementById("restockPopup").style.display = "none";
         }
 
@@ -204,12 +236,12 @@ if (isset($_GET['search'])) {
         document.getElementById("restockButton").addEventListener("click", openRestockPopup);
 
         // Event listener for the restock form submission
-        document.getElementById("restockForm").addEventListener("submit", function (event) {
-            event.preventDefault();
-            // Add logic to handle the form submission (e.g., AJAX request to restock)
-            // After handling the submission, you may want to close the popup
-            closeRestockPopup();
-        });
+        // document.getElementById("restockForm").addEventListener("submit", function (event) {
+        //     event.preventDefault();
+        //     // Add logic to handle the form submission (e.g., AJAX request to restock)
+        //     // After handling the submission, you may want to close the popup
+        //     closeRestockPopup();
+        // });
     </script>
 </body>
 
