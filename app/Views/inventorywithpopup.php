@@ -140,9 +140,11 @@ if (isset($_GET['search'])) {
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5); /* Adjust the alpha value for transparency */
+            background: rgba(0, 0, 0, 0.5);
+            /* Adjust the alpha value for transparency */
             display: none;
-            z-index: 998; /* Ensure the backdrop is below the popup */
+            z-index: 998;
+            /* Ensure the backdrop is below the popup */
         }
 
         /* Updated style for the restock popup */
@@ -158,6 +160,10 @@ if (isset($_GET['search'])) {
             border-radius: 10px;
             z-index: 999;
         }
+
+        .menu > * {
+            margin-right: 5px;
+        }
     </style>
 </head>
 
@@ -166,11 +172,9 @@ if (isset($_GET['search'])) {
         <h2 style="color: black;">Welcome!</h2>
     </div>
     <div class="menu">
-        <p>
-            <a href="/">Dashboard</a> |
-            <a href="/inventory">Inventory</a> |
-            <button id="restockButton">Restock Medicine</button>
-        </p>
+        <button onclick="window.location.href='/'">Dashboard</button>
+        <button onclick="window.location.href='/inventory'">Inventory</button>
+        <button id="restockButton">Restock Medicine</button>
     </div>
     <div id="backdrop"></div>
     <div id="restockPopup" class="popup">
@@ -193,7 +197,7 @@ if (isset($_GET['search'])) {
     <div id="search-bar" style="display: flex; justify-content: center">
         <form>
             <label for="search-input" style="margin-right: 5px;">Search:</label>
-            <input type="text" id="search-input" name="search" placeholder="Enter keyword">
+            <input type="text" id="search-input" name="search" placeholder="Enter keyword" style="margin-right: 5px;">
             <button type="submit">Search</button>
         </form>
     </div>
