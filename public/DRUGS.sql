@@ -1,4 +1,6 @@
-CREATE TABLE drugs(
+CREATE DATABASE IF NOT EXISTS cocoon;
+
+CREATE TABLE IF NOT EXISTS drugs(
   id 		 INT NOT NULL PRIMARY KEY AUTO_INCREMENT
   ,brandName     VARCHAR(16) 
   ,genericName   VARCHAR(13) NOT NULL
@@ -35,3 +37,12 @@ INSERT INTO drugs(id,brandName,genericName,NDC,dosage,expDate,supID,purchasePric
 INSERT INTO drugs(id,brandName,genericName,NDC,dosage,expDate,supID,purchasePrice,sellPrice) VALUES (23,'Cozaar','losartan',78965,100,'05/23',1,5.45,6.78);
 INSERT INTO drugs(id,brandName,genericName,NDC,dosage,expDate,supID,purchasePrice,sellPrice) VALUES (24,'Tylenol','acetaminophen',78977,100,'12/23',1,1.98,3.44);
 INSERT INTO drugs(id,brandName,genericName,NDC,dosage,expDate,supID,purchasePrice,sellPrice) VALUES (25,'Ambien','zolpidem',78987,80,'11/24',2,25.44,30.56);
+
+CREATE TABLE IF NOT EXISTS user (
+    name VARCHAR(225) NOT NULL,
+    email VARCHAR(225) NOT NULL PRIMARY KEY,
+    password VARCHAR(225) NOT NULL
+);
+
+-- Dummy account with password = 12345678
+INSERT INTO user (name, email, password) VALUES ('Milky Way', 'milkyway@gmail.com', '25d55ad283aa400af464c76d713c07ad');

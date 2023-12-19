@@ -1,59 +1,59 @@
-# CodeIgniter 4 Framework
+# Pharmacy - Inventory Management
+## Tugas Besar II3160 Teknologi Sistem Terintegrasi
+Medicine Inventory Management System is a system used to stored any data and information of medicines in a pharmacy. This system uses an API from [Medicine Review System](https://github.com/cathlauretta/II3160-pharmacy-review) to show summary of medicine products recommendations.
 
-## What is CodeIgniter?
+## Table of Contents
+- [Requirements](#requirements)
+- [How to Run the Program](#how-to-run-the-program)
+- [Program Usage Guide](#program-usage-guide)
+- [Authors](#authors)
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+## Requirements
+- [CodeIgniter4](https://github.com/codeigniter4/CodeIgniter4)
+- [XAMPP](https://www.apachefriends.org/)
+- Code Editor, such as [Visual Studio Code](https://code.visualstudio.com/download)
 
-This repository holds the distributable version of the framework.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+## How to Run the Program
+1. Clone this repository
+    ```bash
+    git clone https://github.com/cathlauretta/II3160-pharmacy-inventory.git
+    ```
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+2. Change directory to the cloned repository
+    ```bash
+    cd II3160-pharmacy-inventory
+    ```
 
-The user guide corresponding to the latest version of the framework can be found
-[here](https://codeigniter4.github.io/userguide/).
+3. Install the required dependencies
+    ```bash
+    php composer.phar install
+    ```
 
-## Important Change with index.php
+4. Open http://localhost/phpmyadmin/ and insert the `DRUGS.sql` to the database
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+5. Adjust the `env.example` to your environment configuration
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+6. Run this command and open http://localhost:8080/
+    ```bash
+    php spark serve
+    ```
 
-**Please** read the user guide for a better explanation of how CI4 works!
+## Program Usage Guide
+User must do login first to access the system. You can use the dummy account from our sql
+<img src="public/doc/Login.jpg">
 
-## Repository Management
+Dashboard shows the insight of the medicine review from the other system
+<img src="public/doc/Dashboard.jpg">
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+Inventory menu shows the information of medicine. Our system can predict how much days left until the medicine need to restock
+<img src="public/doc/Inventory.jpg">
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+User can input how many medicine to restock
+<img src="public/doc/Restock.jpg">
 
-## Contributing
-
-We welcome contributions from the community.
-
-Please read the [*Contributing to CodeIgniter*](https://github.com/codeigniter4/CodeIgniter4/blob/develop/CONTRIBUTING.md) section in the development repository.
-
-## Server Requirements
-
-PHP version 7.4 or higher is required, with the following extensions installed:
-
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
-
-> **Warning**
-> The end of life date for PHP 7.4 was November 28, 2022. If you are
-> still using PHP 7.4, you should upgrade immediately. The end of life date
-> for PHP 8.0 will be November 26, 2023.
-
-Additionally, make sure that the following extensions are enabled in your PHP:
-
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+## Author
+| Student ID | Name |
+|---|---|
+| 18221053 | Laurentia Kayleen Christopher |
+| 18221083 | Nazhif Haidar Putra Wibowo |
+| 18221157 | Cathleen Lauretta |
