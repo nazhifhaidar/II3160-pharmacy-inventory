@@ -22,8 +22,16 @@
     h3 {
         font-size: 1rem;
     }
+
+    .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
 </style>
     <body>
-        <h1>
-            Website MyMed (Dibaca Mamet)
-        </h1>
+        <div class="center">
+            <h1>
+                Website MyMed (Dibaca Mamet)
+            </h1>

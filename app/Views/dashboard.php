@@ -1,30 +1,28 @@
 <h2>Dashboard</h2>
-<p>Ini halaman dashboard</p>
 
 <!-- menampilkan tren obat terakhir-->
-<div id="dashboard">
+<div class="center" id="dashboard">
     <!-- Overall Information -->
-    <div id="overall">
-        <h3>Overall Reviews</h3>
-        <div id="overallChartDiv" style="height:40vh; width:80vw">
+    <div id="overall" style="display:flex; justify-content: center;flex-direction:column; align-items:center;">
+        <h3 >Overall Reviews</h3>
+        <div id="overallChartDiv" style="height:40vh; width:80vw; display:flex; justify-content: center;">
             <canvas id="overallChart"></canvas>
         </div>
         <div id="totalReview"></div>
     </div>
 
     <!-- The Most Reviewed Product -->
-    <div id="mostReviewed">
+    <div id="mostReviewed" style="display:flex; justify-content: center; flex-direction:column; align-items:center;">
         <h3>The Most Reviewed Product</h3>
-        <div id="mostReviewedInfo" style=" height:40vh; width:80vw">
-            <canvas id="mostReviewedChart"></canvas>
+        <div id="mostReviewedInfo">
             <div id="mostReviewedDetails"></div>
         </div>
     </div>
 
     <!-- Top 3 Products -->
-    <div id="top3Products">
+    <div id="top3Products" style="display:flex; justify-content: center;flex-direction:column; align-items:center;">
         <h3>Top 3 Products</h3>
-        <div id="top3ProductsInfo" style="height:40vh; width:80vw">
+        <div id="top3ProductsInfo" style="height:40vh; width:80vw; display:flex; justify-content: center;">
             <canvas id="top3ProductsChart"></canvas>
         </div>
     </div>
@@ -55,21 +53,21 @@
     document.getElementById('totalReview').innerText = `Total Reviews: ${summary.overall.total_review}`;
 
     // Most Reviewed Chart
-    const mostReviewedChartCtx = document.getElementById('mostReviewedChart').getContext('2d');
-    const mostReviewedChart = new Chart(mostReviewedChartCtx, {
-        type: 'doughnut',
-        data: {
-            labels: ['Recommend', 'Do Not Recommend'],
-            datasets: [{
-                data: [summary.the_most_reviewed.percentage.number, summary.the_most_reviewed.count - summary.the_most_reviewed.percentage.number],
-                backgroundColor: ['#36A2EB', '#FF6384'],
-            }],
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: true
-        },
-    });
+    // const mostReviewedChartCtx = document.getElementById('mostReviewedChart').getContext('2d');
+    // const mostReviewedChart = new Chart(mostReviewedChartCtx, {
+    //     type: 'doughnut',
+    //     data: {
+    //         labels: ['Recommend', 'Do Not Recommend'],
+    //         datasets: [{
+    //             data: [summary.the_most_reviewed.percentage.number, summary.the_most_reviewed.count - summary.the_most_reviewed.percentage.number],
+    //             backgroundColor: ['#36A2EB', '#FF6384'],
+    //         }],
+    //     },
+    //     options: {
+    //         responsive: true,
+    //         maintainAspectRatio: true
+    //     },
+    // });
 
     // Most Reviewed Details
     document.getElementById('mostReviewedDetails').innerText = `Most Reviewed Product (ID ${summary.the_most_reviewed.id}): ${summary.the_most_reviewed.percentage.percentage}% Recommends`;

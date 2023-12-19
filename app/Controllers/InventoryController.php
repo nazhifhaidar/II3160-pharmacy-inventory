@@ -13,6 +13,8 @@ class InventoryController extends BaseController
             return redirect()->to('/login');
         }
 
+        // log_message('info', session()->get('username'));
+
         $model = model(Drugs::class);
         $data = $model->getDataDrugs();
 
