@@ -14,7 +14,7 @@ class Home extends BaseController
             return redirect()->to('/login');
         }
 
-        $url = 'http://localhost:8081/api/summary';
+        $url = getenv('SERVICE_URL').'/api/summary';
         $method = 'GET';
         $client = \Config\Services::curlrequest();
         $client->setHeader('Content-Type', 'application/json');
